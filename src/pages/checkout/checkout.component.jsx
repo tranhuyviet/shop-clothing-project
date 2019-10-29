@@ -4,7 +4,7 @@ import "./checkout.styles.scss";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 
 import { connect } from "react-redux";
-import { removeItem } from "../../redux/cart/cart.action";
+
 import {
   selectCartItems,
   selectCartTotal
