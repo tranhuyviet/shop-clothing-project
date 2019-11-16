@@ -23,28 +23,24 @@ class App extends React.Component {
   componentDidMount() {
     const { setCurrentUser } = this.props;
 
-    this.unsubcribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      // this.setState({ currentUser: user });
-      // console.log(user);
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot(snapShot => {
-          // console.log(snapShot); this have id
-          // console.log(snapShot.data()); and this have all info: displayName, email, createdAt
-          setCurrentUser(
-            {
-              currentUser: {
-                id: snapShot.id,
-                ...snapShot.data()
-              }
-            }
-            //() => console.log(this.state.currentUser)
-          );
-        });
-      } else {
-        setCurrentUser(userAuth);
-      }
-    });
+    // this.unsubcribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+
+    //   if (userAuth) {
+    //     const userRef = await createUserProfileDocument(userAuth);
+    //     userRef.onSnapshot(snapShot => {
+    //       setCurrentUser(
+    //         {
+    //           currentUser: {
+    //             id: snapShot.id,
+    //             ...snapShot.data()
+    //           }
+    //         }
+    //       );
+    //     });
+    //   } else {
+    //     setCurrentUser(userAuth);
+    //   }
+    // });
   }
 
   componentWillUnmount() {
@@ -88,7 +84,4 @@ const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
